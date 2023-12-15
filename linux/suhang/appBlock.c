@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 
     mkdir(LOGDIR, 0775);
     chdir(LOGDIR);
-    FILE *fp = fopen(LOGFILE, "logfile");
+    FILE *fp = fopen(LOGFILE, "a");
 
     fprintf(fp, "process name: %s\t", argv[0]);
     for (int k = 1; k < argc; k++)
@@ -62,7 +62,7 @@ int main(int argc, char **argv)
     {
         int signum = ((ran / 2) % 15 + 1);
 
-        FILE *fp = fopen(LOGFILE, "logfile");
+        FILE *fp = fopen(LOGFILE, "a");
 
         fprintf(fp, "process name: %s\t", argv[0]);
 
@@ -78,7 +78,7 @@ int main(int argc, char **argv)
     {
         int exitval = (ran / 2) % 256;
 
-        FILE *fp = fopen(LOGFILE, "logfile");
+        FILE *fp = fopen(LOGFILE, "a");
 
         fprintf(fp, "process name: %s\t", argv[0]);
 

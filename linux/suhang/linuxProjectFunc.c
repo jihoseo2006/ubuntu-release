@@ -134,7 +134,7 @@ void FileLogger(swInfo* list) {
 
     FILE* fp;
 
-    fp = fopen(LOGFILE, "logfile");
+    fp = fopen(LOGFILE, "a");
 
     fprintf(fp, "process name: %s\trestart count: %s\tstart time: %s\treason: %s\n",
                     list->name, list->restart_count, list->start_time, list->reason);
