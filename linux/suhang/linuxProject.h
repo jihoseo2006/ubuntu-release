@@ -4,7 +4,7 @@
 #include <sys/types.h>
 
 #define MAX_STR 100
-#define BLOCK_COUNT 10  //Max Sw Block number
+#define BLOCK_COUNT 10  //최대 sw block 수
 
 #define LOGDIR  "./log"
 #define LOGFILE "restart.txt"
@@ -12,11 +12,11 @@
 typedef char* String;
 
 typedef struct _swInfo {
-    String name;    //process name
-    String restart_count;   //restart count (char*)
-    String start_time;  //start/restart time
-    String reason;  //process signal/exit code
-    int int_restart;    //restart count (int)
+    String name;    //프로세스 이름
+    String restart_count;   //재시작 횟수
+    String start_time;  //시작/재시작 코드
+    String reason;  //프로세스 시그널
+    int int_restart;    //재시작 카운트
 } swInfo;
 
 typedef struct _swParam {

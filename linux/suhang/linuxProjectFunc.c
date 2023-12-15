@@ -13,7 +13,7 @@
 
 #include "linuxProject.h"
 
-void InitStruct(swManager* info) { //Init struct swManager
+void InitStruct(swManager* info) { //swManager 구조체 초기화
     info->p_no = 0;
     info->dpid = 0;
     for(int i = 0; i < BLOCK_COUNT; i++) {
@@ -134,7 +134,7 @@ void FileLogger(swInfo* list) {
 
     FILE* fp;
 
-    fp = fopen(LOGFILE, "a");
+    fp = fopen(LOGFILE, "logfile");
 
     fprintf(fp, "process name: %s\trestart count: %s\tstart time: %s\treason: %s\n",
                     list->name, list->restart_count, list->start_time, list->reason);

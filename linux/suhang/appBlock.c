@@ -11,7 +11,8 @@
 #define LOGDIR "./log"
 #define LOGFILE "logFile.log"
 
-char *gettime(void) {
+char *gettime(void)
+{
     struct timeval tv;
     gettimeofday(&tv, NULL);
 
@@ -20,7 +21,7 @@ char *gettime(void) {
     struct tm *ptm = localtime(&t);
     static char str[1024];
 
-    sprintf(str, "%04d-%02d-%02d, %02d:%02d:%02d", 
+    sprintf(str, "%04d-%02d-%02d, %02d:%02d:%02d",
             ptm->tm_year + 1900,
             ptm->tm_mon + 1,
             ptm->tm_mday,
@@ -31,12 +32,14 @@ char *gettime(void) {
     return str;
 }
 
-int RandomByPID() {
+int RandomByPID()
+{
     srand(getpid());
     return rand() % 11;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     struct timeval tv;
     gettimeofday(&tv, NULL);
 
@@ -44,9 +47,9 @@ int main(int argc, char **argv) {
 
     mkdir(LOGDIR, 0775);
     chdir(LOGDIR);
-    FILE *fp = fopen(LOGFILE, "a");
+    FILE *fp = fopen(LOGFILE, "logfile");
 
-    fprintf(fp, "process name: %s\t", argv[0]);  
+    fprintf(fp, "process name: %s\t", argv[0]);
     for (int k = 1; k < argc; k++)
         fprintf(fp, "%s ", argv[k]);
 
@@ -55,10 +58,11 @@ int main(int argc, char **argv) {
     fclose(fp);
     sleep(ran % 20 + 1);
 
-    if (ran % 2) { //odd => signal
+    if (ran % 2)
+    {
         int signum = ((ran / 2) % 15 + 1);
 
-        FILE *fp = fopen(LOGFILE, "a");
+        FILE *fp = fopen(LOGFILE, "logfile");
 
         fprintf(fp, "process name: %s\t", argv[0]);
 
@@ -70,10 +74,11 @@ int main(int argc, char **argv) {
         fclose(fp);
         kill(getpid(), signum);
     }
-    else { // even -> exit
+    else
+    {
         int exitval = (ran / 2) % 256;
 
-        FILE *fp = fopen(LOGFILE, "a");
+        FILE *fp = fopen(LOGFILE, "logfile");
 
         fprintf(fp, "process name: %s\t", argv[0]);
 
